@@ -5,7 +5,7 @@ header {
 app-header {
     width: 100%;
     margin: 0;
-    background-color: white;
+    background-color: #FDD90B;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -32,7 +32,7 @@ app-footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #240000;
+    background-color: #FDD90B;
 }
 
 @media screen and (max-width: 767px) {
