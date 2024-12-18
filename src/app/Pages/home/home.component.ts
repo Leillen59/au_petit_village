@@ -1,16 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductComponent } from "../product/product.component";
+import { ProductService } from '../../../services/product.service.js';
+import { Product } from '../../models/product.js';
+import { FormsModule } from '@angular/forms';
+import { ProductFilterPipe } from '../../../pipe/filter-by-name.pipe.ts.pipe.js';
+import { PriceSortPipe } from '../../../pipe/sort-by-price.pipe.js';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
-  template: `
-    <p>
-      home works!
-    </p>
-  `,
-  styles: ``
+  imports: [CommonModule,
+            ProductComponent,
+            FormsModule,
+            ProductFilterPipe,
+            PriceSortPipe
+          ],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  products: Product[] = [];
+  searchQuery: string = '';
+  sortOrder: 'asc' | 'desc' | null = null;
 
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.products = this.productService.getAllProducts();
+  }
+
+  sortByPrice() {
+    switch(this.sortOrder) {
+      case null:
+        this.sortOrder = 'asc';
+        break;
+      case 'asc':
+        this.sortOrder = 'desc';
+        break;
+      case 'desc':
+        this.sortOrder = null;
+        break;
+    }
+  }
 }
