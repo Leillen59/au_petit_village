@@ -1,0 +1,43 @@
+.about {
+    margin: 1em;
+}
+
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: var(--font-title);
+    color: #DA001E;
+  }
+
+.team-photo {
+    width: 20em;
+  }
+
+.description p {
+    font-family: var(--font-text);
+    font-weight: 900;
+    text-align: justify;
+  }
+
+@media screen and (max-width: 767px) {
+    .about{
+        width: 85%;
+    }
+  }
+  
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    .about{
+        width: 85%;
+    }
+  }
+  
+@media screen and (min-width: 1281px) {
+    .about{
+        width: 60%;
+    }
+  }
