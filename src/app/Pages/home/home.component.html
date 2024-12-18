@@ -1,0 +1,32 @@
+<div class="accueil">
+    <div>
+        <div class="description-bg">
+            <h1>AU PETIT VILLAGE</h1>
+            <div class="description">
+                <p>
+                    Plongez dans l'univers d'Astérix comme jamais auparavant ! Notre atelier crée des figurines uniques d'Astérix et Obélix, entièrement sculptées et peintes à la main. Chaque pièce est une œuvre d'art, réalisée avec passion par nos artisans, pour les collectionneurs les plus exigeants. Redécouvrez les aventures des Gaulois les plus célèbres sous une nouvelle forme, avec des détails saisissants et une qualité exceptionnelle
+                </p>
+                <p>
+                    Nos figurines en résine, souvent en édition limitée, sont appréciées des collectionneurs du monde entier pour leur qualité et leur authenticité. Rejoignez la communauté des fans d'Astérix et offrez-vous une pièce unique !
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="filter-container">
+        <input type="text" class="name-search" [(ngModel)]="searchQuery">
+        <button class="filter-price" (click)="sortByPrice()">
+            Prix 
+            <span *ngIf="sortOrder === 'asc'">↑</span>
+            <span *ngIf="sortOrder === 'desc'">↓</span>
+        </button>
+    </div>
+    <div class="products">
+        <div class="products-list">
+            <app-product 
+            *ngFor="let product of (products | productFilter:searchQuery | priceSort:sortOrder)"
+            [product]="product"
+            [isDetail]="false">
+        </app-product>
+        </div>
+    </div>
+</div>
